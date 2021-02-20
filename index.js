@@ -10,7 +10,8 @@ const {MONGODB} = require('./config.js');
 
 const server = new ApolloServer({
     typeDefs,
-    resolvers
+    resolvers,
+    context: ({req}) => ({req})  //sends req data from express to apollo server as context
 });
 
 mongoose.connect(MONGODB,{useNewUrlParser: true, useUnifiedTopology: true , useCreateIndex : true , useFindAndModify: false})
