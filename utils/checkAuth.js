@@ -4,10 +4,11 @@ const jwt = require('jsonwebtoken');
 const {SECRET_KEY} = require('../config.js');
 
 module.exports = (context) => {
-    const authHeader = context.req.header.authorization;
+    const authHeader = context.req.headers.authorization;
     if(authHeader){
+        console.log('============');
         // Bearer .....
-        const token = authHeader.split('Bearer')[1];
+        const token = authHeader.split('Bearer ')[1];
         if(token){
             try{
                 const userToken = jwt.verify(token,SECRET_KEY);
@@ -18,5 +19,5 @@ module.exports = (context) => {
         }
         throw new Error('Authentication token must be \'Bearer [Token]');
     }
-    throw new Error('Authentication header must be provided');
+    throw new Error('Authorization header must be provided');
 }
