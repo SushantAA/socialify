@@ -3,18 +3,18 @@ const {model,Schema, Mongoose} = require('mongoose');
 const postSchema = new Schema({
     username : String,
     body : String,
-    createdAT : String,
+    createdAt : String,
     comments : [
         {
             username : String,
             body : String,
-            createdAT : String
+            createdAt : String
         }
     ],
     likes : [
         {
             username : String,
-            createdAT : String
+            createdAt : String
         }
     ],
     user : {
