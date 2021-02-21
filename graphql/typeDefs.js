@@ -22,6 +22,8 @@ module.exports = gql`
     username: String!
     comments: [Comments]
     likes: [Likes]
+    likeCount: Int!
+    commentCount: Int!
   }
 
 
@@ -58,4 +60,9 @@ module.exports = gql`
     deleteComment(postId:ID!,commentId:ID!):Post!
     likePost(postId:ID!):Post!
   }
+
+  type Subscription{
+    newPost:Post!
+  }
+
 `;
